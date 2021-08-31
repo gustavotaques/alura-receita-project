@@ -38,10 +38,20 @@ Para rodar este projeto você precisa realizar alguns passos:
 1. Execute o `SQL Shell`
 2. Crie um database com o comando `CREATE DATABASE <nome_do_database>;`
 3. Atribua o `<nome_do_database>` na variável `DB_NAME` no arquivo `.env`
-4. Atribua o `nome_do_usuario` (por padrão é `postgres`) na variável `DB_USER` no arquivo `.env`
+4. Atribua o `username` (por padrão é `postgres`) na variável `DB_USER` no arquivo `.env`
 5. Atribua o `password` (criado quando configurado o PostgreSQL) na variável `DB_PWD` no arquivo `.env`
-6. Ainda no `SQL Shell` execute o comando `GRANT ALL PRIVILEGES ON DATABASE <nome_do_database> TO nome_do_usuario;`. Se confirmado ele aparecerá `GRANT`
+6. Ainda no `SQL Shell` execute o comando `GRANT ALL PRIVILEGES ON DATABASE <nome_do_database> TO username;`. Se confirmado ele aparecerá `GRANT`
+7. No terminal execute o comando `python manage.py migrate` para migrar os dados para o banco de dados
+8. Digite `python manage.py runserver` para rodar o servidor
 
 #### No WSL e Linux
 
-1. 
+1. Inicie o PostgreSQL com o comando `sudo service postgresql start`
+2. Abra o `SQL Shell` com o comando `sudo -u postgres psql`
+3. Crie um database com o comando `CREATE DATABASE <nome_do_database>;`
+4. Atribua o `<nome_do_database>` na variável `DB_NAME` no arquivo `.env`
+5. Digite o comando `CREATE USER <username> WITH PASSWORD <your_password>;`
+6. Atribua o `username` na variável `DB_USER` no arquivo `.env` e o `your_password` na variável `DB_PWD`
+7. Ainda no `SQL Shell` execute o comando `GRANT ALL PRIVILEGES ON DATABASE <nome_do_database> TO username;`. Se confirmado ele aparecerá `GRANT`
+8. No terminal execute o comando `python manage.py migrate` para migrar os dados para o banco de dados
+9. Digite `python manage.py runserver` para rodar o servidor
